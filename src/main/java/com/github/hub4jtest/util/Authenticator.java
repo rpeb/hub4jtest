@@ -2,18 +2,18 @@ package com.github.hub4jtest.util;
 
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Properties;
 
 @Service
 public class Authenticator {
-    @Value("${pat}")
-    String personalAccessToken;
+    String tokenProperty = "src/main/resources/token.properties";
+    Properties properties = PropertyFile.getPropertiesFromFile(tokenProperty);
+    String personalAccessToken = properties.getProperty("pat");
 
     public GitHub isAuthenticated() throws IOException {
-        System.out.println("authentication request");
         return new GitHubBuilder().withOAuthToken(personalAccessToken).build();
     }
 }

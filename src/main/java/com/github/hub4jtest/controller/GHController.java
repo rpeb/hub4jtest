@@ -4,10 +4,7 @@ import com.github.hub4jtest.util.Authenticator;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -37,7 +34,6 @@ public class GHController {
                 .private_(true)
                 .licenseTemplate("mit")
                 .create();
-        github.getRepository("rpeb/one").delete();
-        github.getRepository("rpeb/two").delete();
     }
+
 }
